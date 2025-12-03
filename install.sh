@@ -15,11 +15,11 @@ mkdir -p "$DEST"
 rm -f "$GETNFLOC"
 
 if $SILENT; then
-    curl -fsSL# https://raw.githubusercontent.com/arnavgr/termux-nf/main/getnf --output getnftemp
-    curl -fsSL# https://raw.githubusercontent.com/arnavgr/termux-nf/main/applynf --output applynftemp
+    curl -fsSL# https://raw.githubusercontent.com/z-zawhtet-a/termux-nf/main/getnf --output getnftemp
+    curl -fsSL# https://raw.githubusercontent.com/z-zawhtet-a/termux-nf/main/applynf --output applynftemp
 else
-    curl -fL# https://raw.githubusercontent.com/arnavgr/termux-nf/main/getnf --output getnftemp
-    curl -fL# https://raw.githubusercontent.com/arnavgr/termux-nf/main/applynf --output applynftemp
+    curl -fL# https://raw.githubusercontent.com/z-zawhtet-a/termux-nf/main/getnf --output getnftemp
+    curl -fL# https://raw.githubusercontent.com/z-zawhtet-a/termux-nf/main/applynf --output applynftemp
 fi
 
 mv getnftemp "$DEST/getnf" 

@@ -326,24 +326,14 @@ filter_installed_fonts() {
 #   Font name
 #######################################
 download_font() {
-    local opts=("--location" "--remote-header-name" "--remote-name")
-    if [[ $ON_MAC == "false" ]]; then
-        opts+=("--silent")
-        echo -n "Downloading $1...  "
-        trap stop_loading_animation SIGINT
-        start_loading_animation
-        curl "${opts[@]}" "$NERDFONTSREPO/releases/download/$RELEASE/$1.tar.xz"
-        stop_loading_animation
-        confirm "Done"
-    else
-        # TODO: figure out how to disable messages about bg process termination
-        opts+=("--progress-bar")
-        info "Downloading $1... "
-        curl "${opts[@]}" "$NERDFONTSREPO/releases/download/$RELEASE/$1.tar.xz"
-        erase_line
-        erase_line
-        echo "Downloading $1... ${GREEN}Done${RESET}"
-    fi
+    local url="$NERDFONTSREPO/releases/download/$RELEASE/$1.tar.xz"
+    local output="$1.tar.xz"
+    echo -n "Downloading $1...  "
+    trap stop_loading_animation SIGINT
+    start_loading_animation
+    curl --location --silent --output "$output" "$url"
+    stop_loading_animation
+    confirm "Done"
 }
 
 #######################################
@@ -402,9 +392,9 @@ remove_font_archives() {
 #   Font name
 #######################################
 install_font() {
-    pushd "$DOWN_DIR" > /dev/null
+    pushd "$DOWN_DIR" > /dev/null || error "Download directory $DOWN_DIR does not exist"
     # Remove the archive if it exists due to curl not having overwrite option
-    rm -f "$DOWN_DIR/$1.tar.xz"
+    rm -f "$1.tar.xz"
     download_font "$1" &&
         extract_font "$1" &&
         save_font_release "$1"

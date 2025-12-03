@@ -13,12 +13,12 @@ pkg install curl ncurses-utils
 
 Run
 ```
-curl -fsSL https://raw.githubusercontent.com/arnavgr/termux-nf/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/z-zawhtet-a/termux-nf/main/install.sh | bash
 ```
 
 You can suppress the installation output with the flag `--silent` or `-s`:
 ```
-curl -fsSL https://raw.githubusercontent.com/arnavgr/termux-nf/main/install.sh | bash -s -- --silent
+curl -fsSL https://raw.githubusercontent.com/z-zawhtet-a/termux-nf/main/install.sh | bash -s -- --silent
 ```
 
 ## Usage
