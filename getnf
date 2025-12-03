@@ -116,6 +116,7 @@ verify_internet_access() {
 
 check_dependencies() {
     ensure_installed curl
+    ensure_installed xz
     verify_internet_access
     create_dirs
 }
